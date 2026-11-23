@@ -1,0 +1,401 @@
+<!--
+Descricao: Aula 15 - Javascript & DOM - Desafios Interativos
+nome_arquivo: index.html
+nome_exercicio: Aula 15 - Desafios de JavaScript & DOM
+nome_aluno: Bianca Heloisa Menezio Arruda
+email_aluno: bianca.arruda01@aluno.cps.sp.gov.br
+turma: WEBI-ISW028-A
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafios de JavaScript & DOM - Profº Attique</title>
+  
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+  
+  <nav class="navbar navbar-expand-lg border-bottom sticky-top header-nav">
+    <div class="container-fluid px-4">
+      <span class="navbar-brand fw-bold d-flex align-items-center gap-2">
+        <i class="bi bi-fileTYPE-js text-warning fs-3"></i>
+        <span>Atividade de JavaScript & DOM <small class="text-secondary fs-6">| 1º Semestre DSM</small></span>
+      </span>
+
+      
+      <div class="d-flex align-items-center gap-2">
+        <i class="bi bi-sun-fill text-warning" id="icone-tema"></i>
+        <div class="form-check form-switch mb-0 fs-5">
+          <input class="form-check-input" type="checkbox" id="toggle-tema" role="switch">
+          <label class="form-check-label fs-6 fw-semibold" for="toggle-tema">Modo Escuro</label>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  
+  <header class="py-4 text-center border-bottom mb-4 header-banner">
+    <div class="container">
+      <h1 class="display-6 fw-bold">Painel de Desafios Interativos</h1>
+      <p class="lead text-body-secondary mb-0">
+        Resolução dos 10 desafios de Manipulação do DOM, Gestão de Eventos e Web Storage.
+      </p>
+    </div>
+  </header>
+
+  <main class="container pb-5">
+    <div class="row g-4">
+
+      
+      
+      
+      <div class="col-12 col-lg-6">
+        <div class="card h-100 shadow-sm challenge-card" id="card-desafio-1">
+          <div class="card-header bg-primary text-white d-flex align-items-center gap-2">
+            <span class="badge bg-white text-primary fw-bold">01</span>
+            <h5 class="card-title mb-0 fs-6">Contador de Caracteres no Comentário</h5>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="text-secondary small">
+              Começa em 140 e diminui conforme você digita. Ao atingir 0, o texto fica vermelho e bloqueia a digitação / desabilita o envio.
+            </p>
+            <div class="mb-3">
+              <label for="comentario" class="form-label fw-semibold">Comentário:</label>
+              <textarea class="form-control" id="comentario" rows="3" placeholder="Digite seu comentário aqui (máx. 140 caracteres)..."></textarea>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span id="contador-chars" class="small fw-semibold text-secondary">140 caracteres restantes</span>
+              </div>
+            </div>
+            <div class="mt-auto">
+              <button class="btn btn-primary w-100" id="btn-enviar-comentario">
+                <i class="bi bi-send-fill me-1"></i> Enviar Comentário
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      
+      
+      <div class="col-12 col-lg-6">
+        <div class="card h-100 shadow-sm challenge-card" id="card-desafio-2">
+          <div class="card-header bg-primary text-white d-flex align-items-center gap-2">
+            <span class="badge bg-white text-primary fw-bold">02</span>
+            <h5 class="card-title mb-0 fs-6">Validação de Senha em Tempo Real</h5>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="text-secondary small">
+              Verifica se os campos coincidem enquanto você digita no segundo campo e desabilita o botão enquanto forem diferentes.
+            </p>
+            <div class="mb-3">
+              <label for="senha" class="form-label fw-semibold">Senha:</label>
+              <input type="password" class="form-control" id="senha" placeholder="Digite sua senha">
+            </div>
+            <div class="mb-3">
+              <label for="confirma-senha" class="form-label fw-semibold">Confirme sua Senha:</label>
+              <input type="password" class="form-control" id="confirma-senha" placeholder="Confirme a mesma senha">
+              <div id="msg-senha" class="form-text fw-bold mt-2" style="min-height: 20px;"></div>
+            </div>
+            <div class="mt-auto">
+              <button class="btn btn-success w-100" id="btn-cadastrar-senha" disabled>
+                <i class="bi bi-check-circle-fill me-1"></i> Cadastrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      
+      
+      <div class="col-12 col-lg-6">
+        <div class="card h-100 shadow-sm challenge-card" id="card-desafio-3">
+          <div class="card-header bg-primary text-white d-flex align-items-center gap-2">
+            <span class="badge bg-white text-primary fw-bold">03</span>
+            <h5 class="card-title mb-0 fs-6">Cálculo Automático de Pedido</h5>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="text-secondary small">
+              O total é recalculado automaticamente ao alterar o produto ou a quantidade selecionada.
+            </p>
+            <div class="mb-3">
+              <label for="select-produto" class="form-label fw-semibold">Produto:</label>
+              <select class="form-select" id="select-produto">
+                <option value="0" selected disabled>Selecione um produto...</option>
+                <option value="100">Teclado - R$ 100,00</option>
+                <option value="50">Mouse - R$ 50,00</option>
+                <option value="800">Monitor - R$ 800,00</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="qtd-produto" class="form-label fw-semibold">Quantidade:</label>
+              <input type="number" class="form-control" id="qtd-produto" min="1" value="1">
+            </div>
+            <div class="alert alert-info py-2 px-3 mt-auto mb-0 d-flex justify-content-between align-items-center">
+              <span class="fw-semibold">Valor do Pedido:</span>
+              <p class="fs-5 fw-bold text-primary mb-0" id="total-pedido">Total: R$ 0,00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      
+      
+      <div class="col-12 col-lg-6">
+        <div class="card h-100 shadow-sm challenge-card" id="card-desafio-4">
+          <div class="card-header bg-primary text-white d-flex align-items-center gap-2">
+            <span class="badge bg-white text-primary fw-bold">04</span>
+            <h5 class="card-title mb-0 fs-6">Cadastro e Exportação para JSON</h5>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="text-secondary small">
+              Captura os dados via <code>event.preventDefault()</code>, monta o objeto JavaScript e exibe na tela formatado como JSON.
+            </p>
+            <form id="form-produto">
+              <div class="row g-2 mb-2">
+                <div class="col-md-6">
+                  <label for="prod-nome" class="form-label small fw-semibold">Nome:</label>
+                  <input type="text" class="form-control form-control-sm" id="prod-nome" placeholder="Ex: Notebook" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="prod-categoria" class="form-label small fw-semibold">Categoria:</label>
+                  <input type="text" class="form-control form-control-sm" id="prod-categoria" placeholder="Ex: Eletrônicos" required>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="prod-preco" class="form-label small fw-semibold">Preço (R$):</label>
+                <input type="number" step="0.01" class="form-control form-control-sm" id="prod-preco" placeholder="Ex: 3500.00" required>
+              </div>
+              <button type="submit" class="btn btn-warning w-100 mb-2">
+                <i class="bi bi-braces me-1"></i> Gerar JSON
+              </button>
+            </form>
+            <div class="bg-dark text-light p-2 rounded small mt-auto font-monospace border" style="max-height: 120px; overflow-y: auto;" id="output-json">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      
+      
+      <div class="col-12 col-lg-6">
+        <div class="card h-100 shadow-sm challenge-card" id="card-desafio-5">
+          <div class="card-header bg-primary text-white d-flex align-items-center gap-2">
+            <span class="badge bg-white text-primary fw-bold">05</span>
+            <h5 class="card-title mb-0 fs-6">Máscara Dinâmica de Telefone</h5>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="text-secondary small">
+              Aceita apenas números e formata automaticamente no formato <code>(XX) XXXXX-XXXX</code> usando Regex.
+            </p>
+            <div class="mb-3">
+              <label for="telefone" class="form-label fw-semibold">Telefone Celular:</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                <input type="text" class="form-control" id="telefone" placeholder="(11) 98765-4321" maxlength="15">
+              </div>
+              <div class="form-text small">Tente digitar letras ou símbolos: eles serão ignorados automaticamente.</div>
+            </div>
+            <div class="alert alert-secondary py-2 small mt-auto mb-0">
+              <strong>Valor limpo (apenas números):</strong> <span id="telefone-limpo" class="font-monospace">Nenhum</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      
+      
+      <div class="col-12 col-lg-6">
+        <div class="card h-100 shadow-sm challenge-card" id="card-desafio-6">
+          <div class="card-header bg-primary text-white d-flex align-items-center gap-2">
+            <span class="badge bg-white text-primary fw-bold">06</span>
+            <h5 class="card-title mb-0 fs-6">Selects Encadeados / Dependentes</h5>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="text-secondary small">
+              A lista de funcionários muda de acordo com o departamento selecionado (TI: Allan, Beatriz, Carlos | RH: Daniela, Eduardo).
+            </p>
+            <div class="mb-3">
+              <label for="select-departamento" class="form-label fw-semibold">Departamento:</label>
+              <select class="form-select" id="select-departamento">
+                <option value="" selected disabled>Escolha um departamento...</option>
+                <option value="TI">TI (Tecnologia da Informação)</option>
+                <option value="RH">RH (Recursos Humanos)</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="select-funcionario" class="form-label fw-semibold">Funcionário:</label>
+              <select class="form-select" id="select-funcionario" disabled>
+                <option value="">Primeiro selecione o departamento acima...</option>
+              </select>
+            </div>
+            <div class="alert alert-light border small mt-auto mb-0" id="info-funcionario">
+              Selecione as opções para visualizar o resultado.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      
+      
+      <div class="col-12 col-lg-6">
+        <div class="card h-100 shadow-sm challenge-card" id="card-desafio-7">
+          <div class="card-header bg-primary text-white d-flex align-items-center gap-2">
+            <span class="badge bg-white text-primary fw-bold">07</span>
+            <h5 class="card-title mb-0 fs-6">Tags / Badges de Habilidades</h5>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="text-secondary small">
+              Digite uma habilidade e clique no botão "+" (ou pressione Enter). Ela é adicionada como um balão com um botão "X" para remoção.
+            </p>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" id="input-habilidade" placeholder="Ex: JavaScript, Bootstrap, Node.js">
+              <button class="btn btn-primary" type="button" id="btn-add-habilidade">
+                <i class="bi bi-plus-lg"></i> Adicionar
+              </button>
+            </div>
+            <label class="form-label small fw-semibold">Habilidades Adicionadas:</label>
+            <div id="container-tags" class="d-flex flex-wrap gap-2 p-3 border rounded bg-body-tertiary" style="min-height: 80px;">
+              <span class="text-secondary small fst-italic" id="placeholder-tags">Nenhuma habilidade adicionada ainda.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      
+      
+      <div class="col-12 col-lg-6">
+        <div class="card h-100 shadow-sm challenge-card" id="card-desafio-8">
+          <div class="card-header bg-primary text-white d-flex align-items-center gap-2">
+            <span class="badge bg-white text-primary fw-bold">08</span>
+            <h5 class="card-title mb-0 fs-6">Validação de Maioridade (+18 Anos)</h5>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="text-secondary small">
+              Calcula a idade baseado na data de nascimento e na data atual do sistema. Menores de 18 anos são bloqueados.
+            </p>
+            <div class="mb-3">
+              <label for="data-nascimento" class="form-label fw-semibold">Data de Nascimento:</label>
+              <input type="date" class="form-control" id="data-nascimento">
+              <div id="aviso-idade" class="mt-2 fw-semibold small" style="min-height: 20px;"></div>
+            </div>
+            <div class="mt-auto">
+              <button class="btn btn-success w-100" id="btn-finalizar-cadastro" disabled>
+                <i class="bi bi-person-check-fill me-1"></i> Finalizar Cadastro
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      
+      
+      <div class="col-12 col-lg-6">
+        <div class="card h-100 shadow-sm challenge-card" id="card-desafio-9">
+          <div class="card-header bg-primary text-white d-flex align-items-center gap-2">
+            <span class="badge bg-white text-primary fw-bold">09</span>
+            <h5 class="card-title mb-0 fs-6">Controle de Checkbox "Selecionar Todos"</h5>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="text-secondary small">
+              Marcar o mestre marca todos. Desmarcar o mestre desmarca todos. Desmarcar qualquer item individual desmarca o mestre automaticamente.
+            </p>
+            
+            <div class="form-check form-switch p-3 border rounded bg-body-secondary mb-3">
+              <input class="form-check-input ms-0 me-2" type="checkbox" id="chk-selecionar-todos">
+              <label class="form-check-label fw-bold" for="chk-selecionar-todos">Selecionar Todos os Itens</label>
+            </div>
+
+            <ul class="list-group list-group-flush border rounded mb-3">
+              <li class="list-group-item d-flex align-items-center">
+                <input class="form-check-input me-3 chk-item" type="checkbox" id="item1">
+                <label class="form-check-label" for="item1">Item 1: HTML5 Semântico</label>
+              </li>
+              <li class="list-group-item d-flex align-items-center">
+                <input class="form-check-input me-3 chk-item" type="checkbox" id="item2">
+                <label class="form-check-label" for="item2">Item 2: CSS3 e Bootstrap 5</label>
+              </li>
+              <li class="list-group-item d-flex align-items-center">
+                <input class="form-check-input me-3 chk-item" type="checkbox" id="item3">
+                <label class="form-check-label" for="item3">Item 3: JavaScript DOM e Eventos</label>
+              </li>
+              <li class="list-group-item d-flex align-items-center">
+                <input class="form-check-input me-3 chk-item" type="checkbox" id="item4">
+                <label class="form-check-label" for="item4">Item 4: Expressões Regulares (Regex)</label>
+              </li>
+              <li class="list-group-item d-flex align-items-center">
+                <input class="form-check-input me-3 chk-item" type="checkbox" id="item5">
+                <label class="form-check-label" for="item5">Item 5: Web Storage (localStorage)</label>
+              </li>
+            </ul>
+            <div class="small text-secondary mt-auto">
+              Total selecionados: <span id="contador-selecionados" class="fw-bold">0</span> de 5
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      
+      
+      <div class="col-12 col-lg-6">
+        <div class="card h-100 shadow-sm challenge-card" id="card-desafio-10">
+          <div class="card-header bg-primary text-white d-flex align-items-center gap-2">
+            <span class="badge bg-white text-primary fw-bold">10</span>
+            <h5 class="card-title mb-0 fs-6">Configurações de Tema com LocalStorage</h5>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <p class="text-secondary small">
+              Alterna a classe <code>.dark-theme</code> no <code>&lt;body&gt;</code> e salva a escolha no <code>localStorage</code> para persistir após recarregar.
+            </p>
+            
+            <div class="p-3 border rounded mb-3 bg-body-tertiary">
+              <div class="form-check form-switch fs-5 mb-2">
+                <input class="form-check-input" type="checkbox" id="toggle-tema-card" role="switch">
+                <label class="form-check-label fs-6 fw-semibold" for="toggle-tema-card">Tema Escuro Ativado</label>
+              </div>
+              <div class="small text-body-secondary">
+                Estado atual salvo no <code>localStorage</code>: <span id="status-storage" class="badge bg-secondary font-monospace">light</span>
+              </div>
+            </div>
+
+            <div class="alert alert-secondary py-2 small mt-auto mb-0">
+              <i class="bi bi-info-circle me-1"></i> Você também pode alternar o tema pelo botão no canto superior direito da página!
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="text-center py-4 border-top mt-4 bg-body-tertiary">
+    <div class="container text-secondary small">
+      <p class="mb-1">Desenvolvido para a disciplina de Desenvolvimento de Software Multiplataforma (DSM)</p>
+      <p class="mb-0">Profº Attique &bull; Atividade 23 de Novembro</p>
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="static/js/script.js"></script>
+</body>
+</html>
+

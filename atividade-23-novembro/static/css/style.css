@@ -1,0 +1,109 @@
+﻿/*--
+Descricao: Aula 15 - Javascript & DOM - Desafios Interativos
+nome_arquivo: index.html
+nome_exercicio: Aula 15 - Desafios de JavaScript & DOM
+nome_aluno: Bianca Heloisa Menezio Arruda
+email_aluno: bianca.arruda01@aluno.cps.sp.gov.br
+turma: WEBI-ISW028-A
+-->*/
+:root {
+  --primary-color: #0d6efd;
+  --transition-speed: 0.3s;
+}
+
+body {
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.challenge-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.challenge-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+.challenge-card .card-header {
+  font-weight: 600;
+  border-bottom: none;
+}
+
+.tag-item {
+  animation: fadeInTag 0.25s ease-out;
+  transition: all 0.2s ease;
+}
+
+@keyframes fadeInTag {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+body.dark-theme {
+  background-color: #121214 !important;
+  color: #e1e1e6 !important;
+}
+
+body.dark-theme .header-nav,
+body.dark-theme .header-banner,
+body.dark-theme footer {
+  background-color: #1a1a1e !important;
+  color: #e1e1e6 !important;
+  border-color: #29292e !important;
+}
+
+body.dark-theme .challenge-card {
+  background-color: #202024 !important;
+  border-color: #323238 !important;
+  color: #e1e1e6 !important;
+}
+
+body.dark-theme .challenge-card .card-body {
+  background-color: #202024 !important;
+}
+
+body.dark-theme .list-group-item {
+  background-color: #202024 !important;
+  border-color: #323238 !important;
+  color: #e1e1e6 !important;
+}
+
+body.dark-theme .form-control,
+body.dark-theme .form-select {
+  background-color: #121214 !important;
+  border-color: #323238 !important;
+  color: #ffffff !important;
+}
+
+body.dark-theme .form-control:focus,
+body.dark-theme .form-select:focus {
+  border-color: #0d6efd !important;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+}
+
+body.dark-theme .bg-body-tertiary,
+body.dark-theme .bg-body-secondary {
+  background-color: #18181b !important;
+  color: #e1e1e6 !important;
+  border-color: #323238 !important;
+}
+
+body.dark-theme #output-json {
+  background-color: #09090a !important;
+  border-color: #27272a !important;
+}
